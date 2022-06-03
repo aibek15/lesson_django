@@ -10,7 +10,7 @@ class Post(models.Model):
     )
     img = models.ImageField(
         verbose_name="Пост",
-        upload_to="media/%Y/%m/%d"
+        upload_to="photos/%Y/%m/%d"
     )
     description = models.TextField(
         verbose_name="chernovik"
@@ -29,5 +29,9 @@ class Post(models.Model):
     )
     user = models.ForeignKey(
         User,
-        on_delete=models.PROTECT
+        on_delete=models.PROTECT,
+        verbose_name='Пользователь'
     )
+    
+    def __str__(self) -> str:
+        return self.title
